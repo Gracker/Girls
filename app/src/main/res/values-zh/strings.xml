@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">干货</string>
+    <string name="menu_activity">福利</string>
+    <string name="menu_main">Android</string>
+    <string name="menu_settings">iOS</string>
+    <string name="menu_videos">视频</string>
+    <string name="loading">加载中......</string>
+</resources>

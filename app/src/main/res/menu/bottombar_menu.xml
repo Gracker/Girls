@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottomBarItemActivity"
+        android:icon="@drawable/ic_face_white_24dp"
+        android:title="@string/menu_activity" />
+    <item
+        android:id="@+id/bottomBarItemMain"
+        android:icon="@drawable/ic_android_white_24dp"
+        android:title="@string/menu_main" />
+    <item
+        android:id="@+id/bottomBarItemSettings"
+        android:icon="@drawable/ic_chrome_reader_mode_white_24dp"
+        android:title="@string/menu_settings" />
+
+    <item
+        android:id="@+id/bottomBarItemVideos"
+        android:icon="@drawable/ic_movie_white_24dp"
+        android:title="@string/menu_videos" />
+</menu>

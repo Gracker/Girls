@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:background="@color/colorWhite">
+
+    <ImageView
+        android:id="@+id/activity_recycke_item_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="Girl"
+        android:elevation="@dimen/activity_horizontal_margin"
+        android:scaleType="centerCrop" />
+
+</RelativeLayout>

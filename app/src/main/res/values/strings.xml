@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Technics</string>
+    <string name="menu_activity">Girls</string>
+    <string name="menu_main">Android</string>
+    <string name="menu_settings">iOS</string>
+    <string name="menu_videos">Video</string>
+    <string name="loading">Loading......</string>
+</resources>
