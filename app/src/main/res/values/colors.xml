@@ -10,4 +10,8 @@
     <color name="sa_green">#1E9618</color>
     <color name="sa_green_dark">#146310</color>
     <color name="colorWhite">#ffffff</color>
+
+    <color name="holo_red_light">#ffff4444</color>
+    <color name="holo_green_light">#ff99cc00</color>
+    <color name="holo_blue_bright">#ff00ddff</color>
 </resources>

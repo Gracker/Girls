@@ -121,9 +121,9 @@ public class PostFragment extends BaseFragment {
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setColorSchemeColors(
-                getResources().getColor(android.R.color.holo_red_light, null),
-                getResources().getColor(android.R.color.holo_green_light, null),
-                getResources().getColor(android.R.color.holo_blue_bright, null));
+                getResources().getColor(R.color.holo_red_light, null),
+                getResources().getColor(R.color.holo_green_light, null),
+                getResources().getColor(R.color.holo_blue_bright, null));
         //swipeRefreshLayout 设置下拉刷新事件
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
