@@ -12,6 +12,19 @@
 
 ![Android](/preview/preview_android.png) ![Android](/preview/preview_android_detail.png) 
 
+另外一种样式：
+在MainActivity中将mBottomBar.useFixedMode()这行注释去掉即可：
+
+```java
+    private void initBottomBar(Bundle savedInstanceState) {
+        mBottomBar = BottomBar.attach(this, savedInstanceState);
+        mBottomBar.noNavBarGoodness();
+//        mBottomBar.useFixedMode(); // show all title and icon on bottom bar
+        mBottomBar.setItems(R.menu.bottombar_menu);
+```
+
+![Android](/preview/preview_girls_all_items.png)
+
 # 用到的库
 
 ``` java

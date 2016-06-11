@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private void initBottomBar(Bundle savedInstanceState) {
         mBottomBar = BottomBar.attach(this, savedInstanceState);
         mBottomBar.noNavBarGoodness();
+//        mBottomBar.useFixedMode(); // show all title and icon on bottom bar
         mBottomBar.setItems(R.menu.bottombar_menu);
         mBottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
             @Override
