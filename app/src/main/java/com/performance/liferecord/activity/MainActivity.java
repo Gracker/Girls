@@ -25,6 +25,7 @@ import static com.performance.liferecord.R.id.bottomBarItemActivity;
 import static com.performance.liferecord.R.id.bottomBarItemMain;
 import static com.performance.liferecord.R.id.bottomBarItemSettings;
 import static com.performance.liferecord.R.id.bottomBarItemVideos;
+import static com.performance.liferecord.R.id.bottomBarItemWeb;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,21 +33,25 @@ public class MainActivity extends AppCompatActivity {
     private static final int BOTTOM_ITEM_TITLE_ANDROID_INDEX = 1;
     private static final int BOTTOM_ITEM_TITLE_IOS_INDEX = 2;
     private static final int BOTTOM_ITEM_TITLE_VIDEO_INDEX = 3;
+    private static final int BOTTOM_ITEM_TITLE_WEB_INDEX = 4;
     private static final String BOTTOM_ITEM_TITLE_MEIZI = "福利";
     private static final String BOTTOM_ITEM_TITLE_ANDROID = "Android";
     private static final String BOTTOM_ITEM_TITLE_IOS = "iOS";
     private static final String BOTTOM_ITEM_TITLE_VIDEO = "休息视频";
+    private static final String BOTTOM_ITEM_TITLE_Web = "前端";
     private BottomBar mBottomBar;
     private FragmentManager mFragmentManager;
     private Fragment mGirlFragment;
     private Fragment mAndroidFragment;
     private Fragment mIOSFragment;
     private Fragment mVideoFragment;
+    private Fragment mWebFragment;
     private int mCurrentFragmentIndex = 0;
     private boolean mGirlFragmentAdded = false;
     private boolean mAndroidFragmentAdded = false;
     private boolean mIOSFragmentAdded = false;
     private boolean mVideoFragmentAdded = false;
+    private boolean mWebFragmentAdded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
                     case bottomBarItemVideos:
                         switchToFragment(BOTTOM_ITEM_TITLE_VIDEO_INDEX);
                         break;
+                    case bottomBarItemWeb:
+                        switchToFragment(BOTTOM_ITEM_TITLE_WEB_INDEX);
+                        break;
                     default:
                         break;
                 }
@@ -99,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
                     case bottomBarItemVideos:
                         refreshData(BOTTOM_ITEM_TITLE_VIDEO_INDEX);
                         break;
+                    case bottomBarItemWeb:
+                        refreshData(BOTTOM_ITEM_TITLE_WEB_INDEX);
+                        break;
                     default:
                         break;
                 }
@@ -111,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         mBottomBar.mapColorForTab(BOTTOM_ITEM_TITLE_ANDROID_INDEX, ContextCompat.getColor(this, R.color.colorPrimary));
         mBottomBar.mapColorForTab(BOTTOM_ITEM_TITLE_IOS_INDEX, ContextCompat.getColor(this, R.color.colorPrimaryDark));
         mBottomBar.mapColorForTab(BOTTOM_ITEM_TITLE_VIDEO_INDEX, ContextCompat.getColor(this, R.color.colorLightBlue));
+        mBottomBar.mapColorForTab(BOTTOM_ITEM_TITLE_WEB_INDEX, ContextCompat.getColor(this, R.color.cpb_default_color));
         mBottomBar.setActiveTabColor("#009688");
     }
 
@@ -165,6 +177,14 @@ public class MainActivity extends AppCompatActivity {
                     mVideoFragmentAdded = true;
                 }
                 break;
+            case BOTTOM_ITEM_TITLE_WEB_INDEX:
+                if (mWebFragmentAdded) {
+                    fragmentTransaction.show(getFragment(i));
+                } else {
+                    fragmentTransaction.add(R.id.fragmentContainer, getFragment(i));
+                    mWebFragmentAdded = true;
+                }
+                break;
             default:
                 break;
         }
@@ -196,6 +216,11 @@ public class MainActivity extends AppCompatActivity {
                     mVideoFragment = PostFragment.newInstance(BOTTOM_ITEM_TITLE_VIDEO);
                 }
                 return mVideoFragment;
+            case BOTTOM_ITEM_TITLE_WEB_INDEX:
+                if (mWebFragment == null) {
+                    mWebFragment = PostFragment.newInstance(BOTTOM_ITEM_TITLE_Web);
+                }
+                return mWebFragment;
             default:
                 break;
 

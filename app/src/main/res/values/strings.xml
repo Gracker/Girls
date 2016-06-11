@@ -4,5 +4,6 @@
     <string name="menu_main">Android</string>
     <string name="menu_settings">iOS</string>
     <string name="menu_videos">Video</string>
+    <string name="menu_web">Web</string>
     <string name="loading">Loading......</string>
 </resources>

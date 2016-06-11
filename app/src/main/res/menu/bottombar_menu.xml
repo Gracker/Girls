@@ -17,4 +17,8 @@
         android:id="@+id/bottomBarItemVideos"
         android:icon="@drawable/ic_movie_white_24dp"
         android:title="@string/menu_videos" />
+    <item
+        android:id="@+id/bottomBarItemWeb"
+        android:icon="@drawable/ic_dashboard_white_24dp"
+        android:title="@string/menu_web" />
 </menu>
