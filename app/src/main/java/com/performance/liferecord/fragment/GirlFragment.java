@@ -110,12 +110,12 @@ public class GirlFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_fragment, null);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.activity_recycke_view);
-        //设置布局管理器
+
         //设置adapter
         mRecyclerView.setAdapter(mGirlAdapter);
         //设置Item增加、移除动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        //表示两列，并且是竖直方向的瀑布流
+        //设置布局管理器,2表示两列，并且是竖直方向的瀑布流
         StaggeredGridLayoutManager mStaggeredGridLayoutManager =
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
@@ -127,9 +127,10 @@ public class GirlFragment extends BaseFragment {
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setColorSchemeColors(
-                getResources().getColor(R.color.holo_red_light, null),
-                getResources().getColor(R.color.holo_green_light, null),
-                getResources().getColor(R.color.holo_blue_bright, null));
+                R.color.holo_red_light,
+                R.color.holo_green_light,
+                R.color.holo_blue_bright);
+
         //swipeRefreshLayout 设置下拉刷新事件
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
