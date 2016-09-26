@@ -10,6 +10,7 @@ import com.performance.liferecord.R;
 import com.performance.liferecord.model.GankData;
 import com.performance.liferecord.utils.PostItemClickEvent;
 import com.performance.liferecord.utils.TimeUtils;
+import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -45,6 +46,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> implements
         holder.date.setText(TimeUtils.getFormatTime(mPostDataList.get(position).getPublishedAt()));
         holder.itemView.setOnClickListener(this);
         holder.itemView.setTag(position);
+
+        if (null != mPostDataList.get(position).getImages()
+                && mPostDataList.get(position).getImages().length >= 0) {
+            holder.image.setVisibility(View.VISIBLE);
+            Picasso.with(mContext).load(mPostDataList.get(position).getImages()[0]).into(holder.image);
+        } else {
+            holder.image.setVisibility(View.GONE);
+        }
     }
 
     @Override

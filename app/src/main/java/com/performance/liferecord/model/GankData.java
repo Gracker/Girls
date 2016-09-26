@@ -57,6 +57,7 @@ public class GankData {
         private String url;
         private boolean used;
         private String who;
+        private String[] images ;
 
         public String get_id() {
             return _id;
@@ -128,6 +129,14 @@ public class GankData {
 
         public void setWho(String who) {
             this.who = who;
+        }
+
+        public String[] getImages() {
+            return images;
+        }
+
+        public void setImages(String[] images) {
+            this.images = images;
         }
     }
 }

@@ -132,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void switchToFragment(int i) {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in,
+                android.R.animator.fade_out);
 
         if (mCurrentFragmentIndex == i) {
             fragmentTransaction.add(R.id.fragmentContainer, getFragment(i));

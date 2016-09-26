@@ -15,15 +15,17 @@
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
-        android:maxLines="1"
+        android:maxLines="2"
         android:text="TextView"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/post_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/post_title"
         android:layout_alignLeft="@+id/post_title"
+        android:layout_alignRight="@+id/post_title"
         android:layout_alignStart="@+id/post_title"
         android:layout_below="@+id/post_title"
         android:layout_marginTop="8dp"
@@ -34,6 +36,8 @@
         android:id="@+id/post_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/post_date"
+        android:layout_alignLeft="@+id/post_title"
         android:layout_alignRight="@+id/post_date"
         android:layout_alignStart="@+id/post_title"
         android:layout_below="@+id/post_date"
@@ -41,4 +45,17 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/post_images"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_height="200dp"
+        android:layout_below="@id/post_desc"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
