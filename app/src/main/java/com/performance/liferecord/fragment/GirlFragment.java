@@ -111,14 +111,17 @@ public class GirlFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.activity_fragment, null);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.activity_recycke_view);
 
-        //设置adapter
-        mRecyclerView.setAdapter(mGirlAdapter);
-        //设置Item增加、移除动画
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
         //设置布局管理器,2表示两列，并且是竖直方向的瀑布流
         StaggeredGridLayoutManager mStaggeredGridLayoutManager =
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
+
+        //设置adapter
+        mRecyclerView.setAdapter(mGirlAdapter);
+        mRecyclerView.setHasFixedSize(true);
+        //设置Item增加、移除动画
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mFloatingActionButton = (FloatingActionButton) rootView.findViewById(R.id.fab_girl);
         mFloatingActionButton.attachToRecyclerView(mRecyclerView);

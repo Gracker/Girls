@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/activity_recycke_item_type"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="320dp"
         android:contentDescription="Girl"
         android:elevation="@dimen/activity_horizontal_margin"
         android:scaleType="centerCrop" />
