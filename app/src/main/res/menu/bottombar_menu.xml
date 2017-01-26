@@ -3,22 +3,22 @@
     <item
         android:id="@+id/bottomBarItemActivity"
         android:icon="@drawable/ic_face_white_24dp"
-        android:title="@string/menu_activity" />
+        android:title="@string/menu_activity"/>
     <item
         android:id="@+id/bottomBarItemMain"
         android:icon="@drawable/ic_android_white_24dp"
-        android:title="@string/menu_main" />
+        android:title="@string/menu_main"/>
     <item
         android:id="@+id/bottomBarItemSettings"
         android:icon="@drawable/ic_chrome_reader_mode_white_24dp"
-        android:title="@string/menu_settings" />
+        android:title="@string/menu_settings"/>
 
     <item
         android:id="@+id/bottomBarItemVideos"
         android:icon="@drawable/ic_movie_white_24dp"
-        android:title="@string/menu_videos" />
+        android:title="@string/menu_videos"/>
     <item
         android:id="@+id/bottomBarItemWeb"
         android:icon="@drawable/ic_dashboard_white_24dp"
-        android:title="@string/menu_web" />
+        android:title="@string/menu_web"/>
 </menu>

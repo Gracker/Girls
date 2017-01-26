@@ -11,7 +11,6 @@ import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.performance.liferecord.R;
 import com.performance.liferecord.model.GankData;
