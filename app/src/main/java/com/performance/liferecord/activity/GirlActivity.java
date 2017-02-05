@@ -27,6 +27,5 @@ public class GirlActivity extends AppCompatActivity {
         Intent intent = getIntent();
         imageUrl = intent.getStringExtra(GankData.IMAGE_URL);
         Picasso.with(this).load(imageUrl).into(girlImage);
-
     }
 }

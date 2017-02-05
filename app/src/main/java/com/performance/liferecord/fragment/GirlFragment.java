@@ -25,7 +25,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import retrofit2.Call;
@@ -43,9 +42,8 @@ public class GirlFragment extends BaseFragment {
     private FloatingActionButton mFloatingActionButton;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    private GankData mMeizi;
     private GirlAdapter mGirlAdapter;
-    private List<GankData.ResultsBean> mMeiziList;
+    private ArrayList mMeiziList;
 
     private Retrofit retrofit;
     private CircularProgressBar mCircularProgressBar;
@@ -72,7 +70,6 @@ public class GirlFragment extends BaseFragment {
             dataType = savedInstanceState.getString(TYPT);
         }
 
-        mMeizi = new GankData();
         mMeiziList = new ArrayList();
         mGirlAdapter = new GirlAdapter(getActivity(), mMeiziList);
 
@@ -111,7 +108,6 @@ public class GirlFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.activity_fragment, null);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.activity_recycke_view);
 
-
         //设置布局管理器,2表示两列，并且是竖直方向的瀑布流
         StaggeredGridLayoutManager mStaggeredGridLayoutManager =
                 new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -130,9 +126,9 @@ public class GirlFragment extends BaseFragment {
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setColorSchemeColors(
-                R.color.holo_red_light,
-                R.color.holo_green_light,
-                R.color.holo_blue_bright);
+                getResources().getColor(R.color.holo_red_light),
+                getResources().getColor(R.color.holo_green_light),
+                getResources().getColor(R.color.holo_blue_bright));
 
         //swipeRefreshLayout 设置下拉刷新事件
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

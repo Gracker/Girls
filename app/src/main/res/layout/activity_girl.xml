@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:id="@+id/activity_girl"
-                                             xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
-                                             tools:context="com.performance.liferecord.activity.GirlActivity">
+<LinearLayout android:id="@+id/activity_girl"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="com.performance.liferecord.activity.GirlActivity">
 
     <ImageView
         android:id="@+id/girlImage"
@@ -12,4 +12,4 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
