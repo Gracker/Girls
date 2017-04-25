@@ -3,6 +3,7 @@ package com.performance.liferecord.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.usage.UsageEvents;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.IdRes;
