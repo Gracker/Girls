@@ -1,9 +1,7 @@
 package com.performance.liferecord.activity;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.usage.UsageEvents;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.IdRes;
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String BOTTOM_ITEM_TITLE_VIDEO = "休息视频";
     private static final String BOTTOM_ITEM_TITLE_Web = "前端";
     private BottomBar mBottomBar;
-    private FragmentManager mFragmentManager;
     private Fragment mGirlFragment;
     private Fragment mAndroidFragment;
     private Fragment mIOSFragment;
@@ -94,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onMenuTabReSelected(@IdRes int menuItemId) {
-                Log.v("Gracker", "onMenuTabReSelected id = " + menuItemId);
                 Log.v("Gracker", "onMenuTabSelected id = " + menuItemId);
                 switch (menuItemId) {
                     case bottomBarItemActivity:
