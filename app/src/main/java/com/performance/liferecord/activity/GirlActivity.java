@@ -2,7 +2,7 @@ package com.performance.liferecord.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.performance.liferecord.R;
@@ -18,7 +18,7 @@ public class GirlActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_girl);
-        girlImage = (ImageView) findViewById(R.id.girlImage);
+        girlImage = findViewById(R.id.girlImage);
 
         getData();
     }
