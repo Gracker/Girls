@@ -47,6 +47,27 @@
 
 # API介绍（Copy form [gank.io/api](http://gank.io/api)）
 
+### 2018-7-17 日更新：
+新增：
+获取最新一天的干货
+例如： http://gank.io/api/today
+
+### 2018-6-13 日更新：
+新增：
+获取闲读的主分类
+例如： http://gank.io/api/xiandu/categories
+
+获取闲读的子分类
+例如： http://gank.io/api/xiandu/category/wow
+注：
+category 后面可接受参数为主分类返回的en_name,例如【apps， wow， android，iOS】
+获取闲读数据
+例如： http://gank.io/api/xiandu/data/id/appinn/count/10/page/1
+注：
+id 后面可接受参数为子分类返回的id
+page 第几页，从1开始
+count 每页的个数
+
 ### 2016-6-12 日更新：
 
 #### 搜索 API
