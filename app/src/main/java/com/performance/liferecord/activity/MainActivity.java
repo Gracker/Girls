@@ -7,10 +7,13 @@ import android.os.PersistableBundle;
 import androidx.annotation.IdRes;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Trace;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.performance.liferecord.R;
+import com.performance.liferecord.databinding.ActivityMainBinding;
 import com.performance.liferecord.fragment.GirlFragment;
 import com.performance.liferecord.fragment.PostFragment;
 import com.performance.liferecord.utils.MessageEvent;
@@ -25,6 +28,7 @@ import static com.performance.liferecord.R.id.bottomBarItemMain;
 import static com.performance.liferecord.R.id.bottomBarItemSettings;
 import static com.performance.liferecord.R.id.bottomBarItemVideos;
 import static com.performance.liferecord.R.id.bottomBarItemWeb;
+import static com.performance.liferecord.databinding.AndroidListItemBinding.inflate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
     private boolean mIOSFragmentAdded = false;
     private boolean mVideoFragmentAdded = false;
     private boolean mWebFragmentAdded = false;
-
+    ActivityMainBinding mActivityMainBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        mActivityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(mActivityMainBinding.getRoot());
         initBottomBar(savedInstanceState);
     }
 
@@ -239,7 +243,9 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState, outPersistentState);
         // Necessary to restore the BottomBar's state, otherwise we would
         // lose the current tab on orientation change.
+        Trace.beginSection("onSaveInstanceState");
         mBottomBar.onSaveInstanceState(outState);
+        Trace.endSection();
     }
 
     @Override
