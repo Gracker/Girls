@@ -106,7 +106,7 @@ public class GirlFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_fragment, null);
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.activity_recycke_view);
+        mRecyclerView = rootView.findViewById(R.id.activity_recycke_view);
 
         //设置布局管理器,2表示两列，并且是竖直方向的瀑布流
         StaggeredGridLayoutManager mStaggeredGridLayoutManager =
@@ -119,12 +119,12 @@ public class GirlFragment extends BaseFragment {
         //设置Item增加、移除动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mFloatingActionButton = (FloatingActionButton) rootView.findViewById(R.id.fab_girl);
+        mFloatingActionButton = rootView.findViewById(R.id.fab_girl);
         mFloatingActionButton.attachToRecyclerView(mRecyclerView);
 
-        mCircularProgressBar = (CircularProgressBar) rootView.findViewById(R.id.circular_progressbar);
+        mCircularProgressBar = rootView.findViewById(R.id.circular_progressbar);
 
-        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout = rootView.findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setColorSchemeColors(
                 getResources().getColor(R.color.holo_red_light),
                 getResources().getColor(R.color.holo_green_light),
