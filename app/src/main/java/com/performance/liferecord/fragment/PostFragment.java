@@ -2,21 +2,23 @@ package com.performance.liferecord.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.performance.liferecord.R;
 import com.performance.liferecord.activity.PostDetailActivity;
 import com.performance.liferecord.adapter.PostAdapter;
 import com.performance.liferecord.gank.GankRetrofit;
 import com.performance.liferecord.gank.GankService;
+import com.performance.liferecord.model.Constant;
 import com.performance.liferecord.model.GankData;
 import com.performance.liferecord.utils.PostItemClickEvent;
 
@@ -24,7 +26,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import retrofit2.Call;
@@ -41,7 +43,7 @@ public class PostFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
     private GankData mMeizi;
     private PostAdapter mGirlAdapter;
-    private List<GankData.ResultsBean> mPostList;
+    private ArrayList mPostList;
 
     private Retrofit retrofit;
     private CircularProgressBar mCircularProgressBar;
@@ -57,6 +59,7 @@ public class PostFragment extends BaseFragment {
         args.putString(TYPT, dataType);
         PostFragment fragment = new PostFragment();
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -80,17 +83,16 @@ public class PostFragment extends BaseFragment {
 
     private void getData() {
         GankService gankService = retrofit.create(GankService.class);
-        Call<GankData> call = gankService.listPost(dataType, 100, 1);
+        Call<GankData> call = gankService.listPost(Constant.CATEGORY_ARTICLE, Constant.TYPE_ALL, 1, 50);
         call.enqueue(new Callback<GankData>() {
             @Override
             public void onResponse(Call<GankData> call, Response<GankData> response) {
                 GankData model = response.body();
-                if (!model.isError()) {
-                    for (GankData.ResultsBean url : model.getResults()) {
-                        Log.d(TAG, "onResponse: " + url);
-                        mPostList.addAll(model.getResults());
-                    }
+                if (model != null) {
+                    GankData.Data[] data = model.getData();
+                    mPostList.addAll(Arrays.asList(data));
                 }
+
                 mGirlAdapter.notifyDataSetChanged();
                 mCircularProgressBar.setVisibility(View.GONE);
             }
@@ -154,9 +156,9 @@ public class PostFragment extends BaseFragment {
     // This method will be called when a MessageEvent is posted
     @Subscribe
     public void onMessageEvent(PostItemClickEvent event) {
-        GankData.ResultsBean resultsBean = event.resultsBean;
+        GankData resultsBean = event.resultsBean;
         Intent intent = new Intent(getActivity(), PostDetailActivity.class);
-        intent.putExtra(GankData.POST_URL, resultsBean.getUrl());
+//        intent.putExtra(GankData.POST_URL, resultsBean.getUrl());
         startActivity(intent);
     }
 }

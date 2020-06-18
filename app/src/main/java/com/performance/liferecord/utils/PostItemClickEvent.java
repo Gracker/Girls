@@ -7,9 +7,9 @@ import com.performance.liferecord.model.GankData;
  */
 
 public class PostItemClickEvent {
-    public GankData.ResultsBean resultsBean;
+    public GankData resultsBean;
 
-    public PostItemClickEvent(GankData.ResultsBean resultsBean) {
+    public PostItemClickEvent(GankData resultsBean) {
         this.resultsBean = resultsBean;
     }
 }

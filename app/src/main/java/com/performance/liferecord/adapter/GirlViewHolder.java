@@ -1,8 +1,9 @@
 package com.performance.liferecord.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.performance.liferecord.R;
 
@@ -12,11 +13,11 @@ import com.performance.liferecord.R;
 
 class GirlViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView type;
+    ImageView imageView;
 
     public GirlViewHolder(View itemView) {
         super(itemView);
-        type = (ImageView) itemView.findViewById(R.id.activity_recycke_item_type);
+        imageView = (ImageView) itemView.findViewById(R.id.activity_recycke_item_type);
 
     }
 }

@@ -2,15 +2,16 @@ package com.performance.liferecord.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.melnykov.fab.FloatingActionButton;
 import com.performance.liferecord.R;
@@ -18,6 +19,7 @@ import com.performance.liferecord.activity.GirlActivity;
 import com.performance.liferecord.adapter.GirlAdapter;
 import com.performance.liferecord.gank.GankRetrofit;
 import com.performance.liferecord.gank.GankService;
+import com.performance.liferecord.model.Constant;
 import com.performance.liferecord.model.GankData;
 import com.performance.liferecord.utils.GirlItemClickEvent;
 
@@ -25,6 +27,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import retrofit2.Call;
@@ -78,18 +81,19 @@ public class GirlFragment extends BaseFragment {
         getData();
     }
 
+    //https://gank.io/api/v2/data/category/Girl/type/Girl/page/1/count/50
     private void getData() {
         GankService gankService = retrofit.create(GankService.class);
-        Call<GankData> call = gankService.listPost(dataType, 100, 1);
+        Call<GankData> call = gankService.listPost(Constant.CATEGORY_GIRL, Constant.TYPE_GIRL, 1, 50);
         call.enqueue(new Callback<GankData>() {
             @Override
             public void onResponse(Call<GankData> call, Response<GankData> response) {
                 GankData model = response.body();
-                if (!model.isError()) {
-                    for (GankData.ResultsBean url : model.getResults()) {
-                        Log.d(TAG, "onResponse: " + url);
-                        mMeiziList.addAll(model.getResults());
-                    }
+                if (model != null) {
+                    GankData.Data[] resultsBean = model.getData();
+                    mMeiziList.addAll(Arrays.asList(resultsBean));
+                } else {
+                    Log.d(TAG, "model != null || !model.isError()");
                 }
                 mGirlAdapter.notifyDataSetChanged();
                 mCircularProgressBar.setVisibility(View.GONE);
@@ -157,9 +161,9 @@ public class GirlFragment extends BaseFragment {
     // This method will be called when a MessageEvent is posted
     @Subscribe
     public void onMessageEvent(GirlItemClickEvent event) {
-        GankData.ResultsBean resultsBean = event.resultsBean;
+        GankData resultsBean = event.resultsBean;
         Intent intent = new Intent(getActivity(), GirlActivity.class);
-        intent.putExtra(GankData.IMAGE_URL, resultsBean.getUrl());
+        intent.putExtra(GankData.IMAGE_URL, resultsBean.getData());
         startActivity(intent);
     }
 

@@ -1,18 +1,16 @@
 package com.performance.liferecord.adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.performance.liferecord.R;
 import com.performance.liferecord.model.GankData;
-import com.performance.liferecord.utils.PostItemClickEvent;
 import com.performance.liferecord.utils.TimeUtils;
-import com.squareup.picasso.Picasso;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -23,9 +21,9 @@ import java.util.List;
 public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> implements View.OnClickListener {
 
     private Context mContext;
-    private List<GankData.ResultsBean> mPostDataList;
+    private List<GankData.Data> mPostDataList;
 
-    public PostAdapter(Context context, List<GankData.ResultsBean> postData) {
+    public PostAdapter(Context context, List<GankData.Data> postData) {
         mContext = context;
         mPostDataList = postData;
     }
@@ -50,7 +48,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> implements
         if (null != mPostDataList.get(position).getImages()
                 && mPostDataList.get(position).getImages().length >= 0) {
             holder.image.setVisibility(View.VISIBLE);
-            Picasso.with(mContext).load(mPostDataList.get(position).getImages()[0]).into(holder.image);
+            ImageLoader.getInstance().displayImage(mPostDataList.get(position).getImages()[0].replace("http", "https"), holder.image); // Get singleton instance
         } else {
             holder.image.setVisibility(View.GONE);
         }
@@ -66,6 +64,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> implements
 
     @Override
     public void onClick(View v) {
-        EventBus.getDefault().post(new PostItemClickEvent(mPostDataList.get((int) v.getTag())));
+//        EventBus.getDefault().post(new PostItemClickEvent(mPostDataList.get((int) v.getTag())));
     }
 }

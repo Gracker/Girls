@@ -1,62 +1,73 @@
 package com.performance.liferecord.model;
 
-import java.util.List;
-
 /**
  * Created by Gracker on 2016/6/10.
  */
 
 public class GankData {
-
     public static final String IMAGE_URL = "imageUrl";
     public static final String POST_URL = "postUrl";
 
-    /**
-     * error : false results : [{"_id":"5757975b421aa90eca080dd5","createdAt":"2016-06-08T11:56:11.8Z","desc":"6.8","publishedAt":"2016-06-08T12:39:36.270Z","source":"chrome","type":"福利","url":"http://ww4.sinaimg.cn/large/610dc034jw1f4nog8tjfrj20eg0mgab7.jpg","used":true,"who":"daimajia"}]
-     */
+    private Data[] data;
+    private String page;
+    private String page_count;
+    private String status;
+    private String total_counts;
 
-    private boolean error;
-    /**
-     * _id : 5757975b421aa90eca080dd5
-     * createdAt : 2016-06-08T11:56:11.8Z
-     * desc : 6.8
-     * publishedAt : 2016-06-08T12:39:36.270Z
-     * source : chrome
-     * type : 福利
-     * url : http://ww4.sinaimg.cn/large/610dc034jw1f4nog8tjfrj20eg0mgab7.jpg
-     * used : true
-     * who : daimajia
-     */
-
-    private List<ResultsBean> results;
-
-    public boolean isError() {
-        return error;
+    public Data[] getData() {
+        return data;
     }
 
-    public void setError(boolean error) {
-        this.error = error;
+    public void setData(Data[] data) {
+        this.data = data;
     }
 
-    public List<ResultsBean> getResults() {
-        return results;
+    public String getPage() {
+        return page;
     }
 
-    public void setResults(List<ResultsBean> results) {
-        this.results = results;
+    public void setPage(String page) {
+        this.page = page;
     }
 
-    public static class ResultsBean {
+    public String getPage_count() {
+        return page_count;
+    }
+
+    public void setPage_count(String page_count) {
+        this.page_count = page_count;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTotal_counts() {
+        return total_counts;
+    }
+
+    public void setTotal_counts(String total_counts) {
+        this.total_counts = total_counts;
+    }
+
+    public static class Data {
         private String _id;
+        private String author;
+        private String category;
         private String createdAt;
         private String desc;
+        private String[] images;
+        private String likeCounts;
         private String publishedAt;
-        private String source;
+        private String stars;
+        private String title;
         private String type;
         private String url;
-        private boolean used;
-        private String who;
-        private String[] images;
+        private String views;
 
         public String get_id() {
             return _id;
@@ -64,6 +75,22 @@ public class GankData {
 
         public void set_id(String _id) {
             this._id = _id;
+        }
+
+        public String getAuthor() {
+            return author;
+        }
+
+        public void setAuthor(String author) {
+            this.author = author;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
         }
 
         public String getCreatedAt() {
@@ -90,12 +117,20 @@ public class GankData {
             this.publishedAt = publishedAt;
         }
 
-        public String getSource() {
-            return source;
+        public String getStars() {
+            return stars;
         }
 
-        public void setSource(String source) {
-            this.source = source;
+        public void setStars(String stars) {
+            this.stars = stars;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public String getType() {
@@ -114,20 +149,12 @@ public class GankData {
             this.url = url;
         }
 
-        public boolean isUsed() {
-            return used;
+        public String getViews() {
+            return views;
         }
 
-        public void setUsed(boolean used) {
-            this.used = used;
-        }
-
-        public String getWho() {
-            return who;
-        }
-
-        public void setWho(String who) {
-            this.who = who;
+        public void setViews(String views) {
+            this.views = views;
         }
 
         public String[] getImages() {
@@ -136,6 +163,14 @@ public class GankData {
 
         public void setImages(String[] images) {
             this.images = images;
+        }
+
+        public String getLikeCounts() {
+            return likeCounts;
+        }
+
+        public void setLikeCounts(String likeCounts) {
+            this.likeCounts = likeCounts;
         }
     }
 }

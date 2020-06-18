@@ -7,9 +7,9 @@ import com.performance.liferecord.model.GankData;
  */
 
 public class GirlItemClickEvent {
-    public GankData.ResultsBean resultsBean;
+    public GankData resultsBean;
 
-    public GirlItemClickEvent(GankData.ResultsBean resultsBean) {
+    public GirlItemClickEvent(GankData resultsBean) {
         this.resultsBean = resultsBean;
     }
 }

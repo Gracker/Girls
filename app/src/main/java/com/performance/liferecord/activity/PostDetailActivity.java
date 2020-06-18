@@ -3,7 +3,6 @@ package com.performance.liferecord.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,6 +10,8 @@ import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.performance.liferecord.R;
 import com.performance.liferecord.model.GankData;

@@ -1,17 +1,16 @@
 package com.performance.liferecord.adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.performance.liferecord.R;
 import com.performance.liferecord.model.GankData;
-import com.performance.liferecord.utils.GirlItemClickEvent;
-import com.squareup.picasso.Picasso;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -20,10 +19,11 @@ import java.util.List;
  */
 
 public class GirlAdapter extends RecyclerView.Adapter<GirlViewHolder> implements View.OnClickListener {
+    ImageLoader imageLoader = ImageLoader.getInstance(); // Get singleton instance
     private Context mContext;
-    private List<GankData.ResultsBean> mGirlDataList;
+    private List<GankData.Data> mGirlDataList;
 
-    public GirlAdapter(Context context, List<GankData.ResultsBean> postData) {
+    public GirlAdapter(Context context, List<GankData.Data> postData) {
         mContext = context;
         mGirlDataList = postData;
     }
@@ -38,9 +38,11 @@ public class GirlAdapter extends RecyclerView.Adapter<GirlViewHolder> implements
 
     @Override
     public void onBindViewHolder(GirlViewHolder holder, int position) {
-        Picasso.with(mContext).load(mGirlDataList.get(position).getUrl()).into(holder.type);
-        holder.type.setOnClickListener(this);
-        holder.type.setTag(position);
+        Log.v("Gracker", "getUrl = " + mGirlDataList.get(position).getUrl());
+//        Picasso.with(mContext).load(mGirlDataList.get(position).getUrl()).into(holder.imageView);
+        imageLoader.displayImage(mGirlDataList.get(position).getUrl().replace("http", "https"), holder.imageView);
+        holder.imageView.setOnClickListener(this);
+        holder.imageView.setTag(position);
     }
 
     @Override
@@ -50,6 +52,6 @@ public class GirlAdapter extends RecyclerView.Adapter<GirlViewHolder> implements
 
     @Override
     public void onClick(View v) {
-        EventBus.getDefault().post(new GirlItemClickEvent(mGirlDataList.get((int) v.getTag())));
+//        EventBus.getDefault().post(new GirlItemClickEvent(mGirlDataList.get((int) v.getTag())));
     }
 }

@@ -4,13 +4,13 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import androidx.annotation.IdRes;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Trace;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.IdRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.performance.liferecord.R;
 import com.performance.liferecord.databinding.ActivityMainBinding;
@@ -28,7 +28,6 @@ import static com.performance.liferecord.R.id.bottomBarItemMain;
 import static com.performance.liferecord.R.id.bottomBarItemSettings;
 import static com.performance.liferecord.R.id.bottomBarItemVideos;
 import static com.performance.liferecord.R.id.bottomBarItemWeb;
-import static com.performance.liferecord.databinding.AndroidListItemBinding.inflate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String BOTTOM_ITEM_TITLE_IOS = "iOS";
     private static final String BOTTOM_ITEM_TITLE_VIDEO = "休息视频";
     private static final String BOTTOM_ITEM_TITLE_Web = "前端";
+    ActivityMainBinding mActivityMainBinding;
     private BottomBar mBottomBar;
     private Fragment mGirlFragment;
     private Fragment mAndroidFragment;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean mIOSFragmentAdded = false;
     private boolean mVideoFragmentAdded = false;
     private boolean mWebFragmentAdded = false;
-    ActivityMainBinding mActivityMainBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,7 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Setting colors for different tabs when there's more than three of them.
         // You can set colors for tabs in three different ways as shown below.
-        mBottomBar.mapColorForTab(BOTTOM_ITEM_TITLE_MEIZI_INDEX, ContextCompat.getColor(this, R.color.colorAccent));
+        mBottomBar.
+                mapColorForTab(BOTTOM_ITEM_TITLE_MEIZI_INDEX, ContextCompat.getColor(this, R.color.colorAccent));
         mBottomBar.mapColorForTab(BOTTOM_ITEM_TITLE_ANDROID_INDEX, ContextCompat.getColor(this, R.color.colorPrimary));
         mBottomBar.mapColorForTab(BOTTOM_ITEM_TITLE_IOS_INDEX, ContextCompat.getColor(this, R.color.colorPrimaryDark));
         mBottomBar.mapColorForTab(BOTTOM_ITEM_TITLE_VIDEO_INDEX, ContextCompat.getColor(this, R.color.colorLightBlue));

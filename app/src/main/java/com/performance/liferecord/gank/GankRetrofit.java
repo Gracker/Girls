@@ -8,7 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class GankRetrofit {
-    private static final String GANK_ID_URL = "http://gank.io/";
+    private static final String GANK_ID_URL = "https://gank.io/";
+
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofit() {
